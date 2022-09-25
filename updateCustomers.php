@@ -10,6 +10,7 @@ use eftec\bladeone\BladeOne;
 
 
 $companies=Company::getCompanies();
+$conversation=Conversation::getConversation($_GET['id']);
 
 $updateCustomers=Customer::getCustomer($_GET['id']);
 
@@ -29,4 +30,4 @@ if (isset($_POST['action']) && $_POST['action']=='update') {
 
 $blade3=new BladeOne();
 
-echo $blade3->run("updateCustomers", ["updateCustomers"=>$updateCustomers, "companies"=>$companies]);
+echo $blade3->run("updateCustomers", ["updateCustomers"=>$updateCustomers, "companies"=>$companies, "conversation"=>$conversation]);

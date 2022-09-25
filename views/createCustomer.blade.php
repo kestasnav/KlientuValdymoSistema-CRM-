@@ -53,6 +53,11 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="mb-3">
+                            <label for="" class="form-label">Kalbėjimo data</label>
+                            <input name="date" type="date" class="form-control">
+                        </div>
+
 
                         <div class="mb-3">
                             <label for="" class="form-label">Kalbejimo tekstas</label>

@@ -63,7 +63,7 @@ class Customer {
         return $customer;
     }
 
-    public function getCon($conversation)
+    public function getConversations($conversation)
     {
         if ($this->conversation = $conversation) {
             $this->conversation = Conversation::getConversation($this->conversation);
@@ -71,10 +71,17 @@ class Customer {
         return $this->conversation;
     }
 
+//    public function create(){
+//        $pdo=DB::getPDO();
+//        $stm=$pdo->prepare("INSERT INTO customers (name, surname, phone, email, address, position, company_id) VALUES (?,?,?,?,?,?,?)");
+//        $stm->execute([ $this->name, $this->surname, $this->phone, $this->email, $this->address, $this->position, $this->company_id ]);
+//        $this->id=$pdo->lastInsertId();
+//        return $this;
+//    }
     public function create(){
         $pdo=DB::getPDO();
-        $stm=$pdo->prepare("INSERT INTO customers (name, surname, phone, email, address, position, company_id) VALUES (?,?,?,?,?,?,?)");
-        $stm->execute([ $this->name, $this->surname, $this->phone, $this->email, $this->address, $this->position, $this->company_id ]);
+        $stm=$pdo->prepare("INSERT INTO `customers`(`name`, `surname`, `phone`, `email`, `address`, `position`, `company_id`) VALUES (?,?,?,?,?,?,?)");
+        $stm->execute([$_POST['name'],$_POST['surname'],$_POST['phone'],$_POST['email'],$_POST['address'],$_POST['position'],$_POST['company_id']]);
         $this->id=$pdo->lastInsertId();
         return $this;
     }

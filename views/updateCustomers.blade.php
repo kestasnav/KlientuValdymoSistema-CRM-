@@ -44,14 +44,26 @@
                             <label for="" class="form-label">Pozicija</label>
                             <input name="position" type="text" class="form-control" value="{{$updateCustomers->position}}">
                         </div>
+
                         <div class="mb-3">
+                            <label for="" class="form-label">Kompanija</label>
                             <select class="form-control" name="company_id">
 
                                 @foreach($companies as $company)
                                     <option value="{{$company->id}}" {{$updateCustomers->company_id == $company->id ? 'selected' : ''}}>{{ $company->name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                            <div class="mb-3">
+                                <label for="" class="form-label">Kalbėjimo data</label>
+                                <input name="date" type="date" class="form-control" value="{{$conversation->date}}">
+                            </div>
 
+
+                            <div class="mb-3">
+                                <label for="" class="form-label">Kalbejimo tekstas</label>
+                                <input name="conversation" type="text" class="form-control" value="{{$conversation->conversation}}">
+                            </div>
 
                         <button class="btn btn-success mt-2">Redaguoti</button>
                         <a href="index.php" class="btn btn-info float-end mt-2">Atgal</a>

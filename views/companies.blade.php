@@ -29,7 +29,7 @@
                 <div class="col-md-12 d-flex flex-row">
                     <table class="table">
                         <thead>
-                        <tr class="table-primary">
+                        <tr class="table-primary text-center">
                             <th>Pavadinimas</th>
                             <th>Adresas</th>
                             <th>VAT code</th>
@@ -43,7 +43,7 @@
                         </thead>
                         @foreach($companies as $company)
                             <tbody>
-                        <tr class="table-info">
+                        <tr class="table-info text-center">
                             <td>{{$company->name}}</td>
                             <td>{{$company->address}}</td>
                             <td>{{$company->vat_code}}</td>

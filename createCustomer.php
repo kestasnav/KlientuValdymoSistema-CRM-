@@ -8,12 +8,13 @@ include_once "lib/BladeOne.php";
 
 use eftec\bladeone\BladeOne;
 
-
-
-
 $createCustomer=Customer::getCustomers();
 
 $companies=Company::getCompanies();
+
+$blade3=new BladeOne();
+
+echo $blade3->run("createCustomer", ["createCustomer"=>$createCustomer, "companies"=>$companies]);
 
 if (isset($_POST['action']) && $_POST['action']=='insert') {
     $createCustomer = new Customer(
@@ -27,15 +28,10 @@ if (isset($_POST['action']) && $_POST['action']=='insert') {
 
     $createCustomer->create();
 
-    $conversation = new Conversation( $createCustomer->id, $_POST['conversation']);
+    $conversation = new Conversation( $_POST['id'],$createCustomer->id, $_POST['date'], $_POST['conversation']);
     $conversation->createConversation();
 
     header("location:index.php");
     die();
 }
-
-$blade3=new BladeOne();
-
-echo $blade3->run("createCustomer", ["createCustomer"=>$createCustomer, "companies"=>$companies]);
-
 

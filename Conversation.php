@@ -45,22 +45,7 @@ class Conversation {
 //        $company=new Company($c['name'],$c['address'],$c['vat_code'],$c['company_name'],$c['phone'],$c['email'], $id);
 //        return $company;
 //    }
-//    public static function getConversations($customer_id=null){
-//        $pdo=DB::getPDO();
-//        if ($customer_id!==null){
-//            $stm=$pdo->prepare("SELECT * FROM contact_information WHERE customer_id=?");
-//            echo "SELECT * FROM contact_information WHERE customer_id=$customer_id <br>";
-//            $stm->execute([$customer_id]);
-//        }else{
-//            $stm=$pdo->prepare("SELECT * FROM contact_information ");
-//            $stm->execute([]);
-//        }
-//        $contact_information=[];
-//        foreach ($stm->fetchAll(PDO::FETCH_ASSOC) as $c){
-//            $contact_information[]=new Conversation($c['id'],$c['customer_id'],$c['date'],$c['conversation']);
-//        }
-//        return $contact_information;
-//    }
+
 
     public function getCustomers() {
         if ($this->customer==null){
@@ -77,6 +62,16 @@ class Conversation {
         $conversation=new Conversation($c['id'],$c['customer_id'],$c['date'],$c['conversation']);
         return $conversation;
 
+    }
+    public static function getConversations(){
+        $pdo=DB::getPDO();
+        $stm=$pdo->prepare("SELECT * FROM contact_information");
+        $stm->execute();
+        $conversation=[];
+        foreach ($stm->fetchAll(PDO::FETCH_ASSOC) as $c){
+            $conversation[]=new Conversation($c['customer_id'],$c['date'],$c['conversation'],$c['id'],);
+        }
+        return $conversation;
     }
 
     public function createConversation(){
