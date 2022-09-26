@@ -23,7 +23,7 @@
 
             <div class="card-header">
 
-                <h1>Kompanijų sąrašas <a class="btn btn-danger" href="createCompany.php">Sukurti naują įmonę</a></h1>
+                <h1>Kompanijų sąrašas <a class="btn btn-danger float-end" href="createCompany.php">Sukurti naują įmonę</a></h1>
             </div>
             <div class="card-body">
                 <div class="col-md-12 d-flex flex-row">

@@ -91,4 +91,11 @@ class Customer {
         $stm=$pdo->prepare("DELETE FROM customers WHERE id=?");
         $stm->execute([ $this->id ]);
     }
+    public function updateCustomer()
+    {
+        $pdo = DB::getPDO();
+        $stm = $pdo->prepare("UPDATE customers SET name=?, surname=?, phone=?, email=?, address=?, position=?, company_id=? WHERE id=?");
+        $stm->execute([$this->name, $this->surname, $this->phone, $this->email, $this->address, $this->position, $this->company_id, $this->id]);
+
+    }
 }

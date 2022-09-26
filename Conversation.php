@@ -69,7 +69,7 @@ class Conversation {
         $stm->execute();
         $conversation=[];
         foreach ($stm->fetchAll(PDO::FETCH_ASSOC) as $c){
-            $conversation[]=new Conversation($c['customer_id'],$c['date'],$c['conversation'],$c['id'],);
+            $conversation[]=new Conversation($c['customer_id'],$c['date'],$c['conversation'],$c['id']);
         }
         return $conversation;
     }
@@ -78,6 +78,14 @@ class Conversation {
         $pdo=DB::getPDO();
         $stm=$pdo->prepare("INSERT INTO contact_information (customer_id, conversation) VALUES (?,?)");
         $stm->execute([ $this->customer_id, $_POST['conversation'] ]);
+    }
+
+    public function updateConversation()
+    {
+        $pdo = DB::getPDO();
+        $stm = $pdo->prepare("UPDATE contact_information SET customer_id=?, date=?, conversation=? WHERE id=?");
+        $stm->execute([$this->customer_id, $this->date, $this->conversation, $this->id]);
+
     }
 
 }

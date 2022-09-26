@@ -22,8 +22,11 @@ if (isset($_POST['action']) && $_POST['action']=='update') {
     $updateCustomers->surname=$_POST['address'];
     $updateCustomers->position=$_POST['position'];
     $updateCustomers->company_id=$_POST['company_id'];
-    $updateCustomers->save();
-
+    $updateCustomers->updateCustomer();
+    $conversation->customer_id=$_POST['id'];
+    $conversation->date=$_POST['date'];
+    $conversation->conversation=$_POST['conversation'];
+    $conversation->updateConversation();
     header("location:index.php");
     die();
 }

@@ -5,7 +5,7 @@
 
         <div class="card-header">
 
-            <h1>Klientų sąrašas  <a class="btn btn-danger" href="createCustomer.php">Sukurti naują klientą</a></h1>
+            <h1>Klientų sąrašas  <a class="btn btn-danger float-end" href="createCustomer.php">Sukurti naują klientą</a></h1>
         </div>
         <div class="card-body">
             <div class="col-md-12 d-flex flex-row">
