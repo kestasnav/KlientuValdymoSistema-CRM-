@@ -16,14 +16,14 @@
 
 <body>
 <div class="container mb-3" id="content" tabindex="-1">
-
+    <a class="btn btn-danger mt-3" href="login.php?logout=1">Atsijungti</a>
     <div class="row">
 
         <div class="card mt-3">
 
             <div class="card-header">
 
-                <h1>Kompanijų sąrašas <a class="btn btn-danger float-end" href="createCompany.php">Sukurti naują įmonę</a></h1>
+                <h1>Kompanijų sąrašas </h1>
             </div>
             <div class="card-body">
                 <div class="col-md-12 d-flex flex-row">
@@ -36,9 +36,10 @@
                             <th>Pilnas pavadinimas</th>
                             <th>Telefonas</th>
                             <th>El. Paštas</th>
+                            @if ($user->canEdit())
                             <th></th>
                             <th></th>
-
+                            @endif
                         </tr>
                         </thead>
                         @foreach($companies as $company)
@@ -50,9 +51,10 @@
                             <td>{{$company->company_name}}</td>
                             <td>{{$company->phone}}</td>
                             <td>{{$company->email}}</td>
+                            @if ($user->canEdit())
                             <td><a class="btn btn-success" href="updateCompany.php?id={{$company->id}}">Update</a></td>
                             <td><a class="btn btn-danger" href="?deleteCompany_id={{$company->id}}">Delete</a></td>
-
+                            @endif
                         </tr>
                             </tbody>
                         @endforeach

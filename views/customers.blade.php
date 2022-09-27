@@ -5,7 +5,7 @@
 
         <div class="card-header">
 
-            <h1>Klientų sąrašas  <a class="btn btn-danger float-end" href="createCustomer.php">Sukurti naują klientą</a></h1>
+            <h1>Klientų sąrašas </h1>
         </div>
         <div class="card-body">
             <div class="col-md-12 d-flex flex-row">
@@ -21,8 +21,10 @@
                         <th>Kompanija</th>
                         <th>Data</th>
                         <th>Kalbėjimo tekstas</th>
+                        @if ($user->canEdit())
                         <th></th>
                         <th></th>
+                        @endif
                     </tr>
                     </thead>
 
@@ -37,10 +39,12 @@
                             <td>{{$customer->position}}</td>
                             <td>{{($customer->getCompany()->name)}}</td>
                             <td>{{$customer->getConversations($customer->id)->date}}</td>
-{{--                            <td>{{$customer->getCon($customer->id)->conversation == true ? $customer->getCon($customer->id)->conversation : 'Nebuvo pokalbio'}}</td>--}}
-                           <td>{{$customer->getConversations($customer->id)->conversation}}</td>
+                            <td>{{$customer->getConversations($customer->id)->conversation == true ? $customer->getConversations($customer->id)->conversation : 'Nebuvo pokalbio'}}</td>
+{{--                           <td>{{$customer->getConversations($customer->id)->conversation}}</td>--}}
+                            @if ($user->canEdit())
                             <td><a class="btn btn-success" href="updateCustomers.php?id={{$customer->id}}">Update</a></td>
                             <td><a class="btn btn-danger" href="?deleteCustomer_id={{$customer->id}}">Delete</a></td>
+                            @endif
                         </tr>
                         @endforeach
                         </tbody>
